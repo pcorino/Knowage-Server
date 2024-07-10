@@ -94,7 +94,7 @@ import it.eng.spagobi.tools.dataset.common.datawriter.JSONDataWriter;
 import it.eng.spagobi.tools.dataset.constants.DataSetConstants;
 import it.eng.spagobi.tools.datasource.bo.IDataSource;
 import it.eng.spagobi.utilities.JSError;
-import it.eng.spagobi.utilities.StringUtils;
+import it.eng.spagobi.utilities.KnowageStringUtils;
 import it.eng.spagobi.utilities.assertion.Assert;
 import it.eng.spagobi.utilities.exceptions.SpagoBIException;
 import it.eng.spagobi.utilities.exceptions.SpagoBIRuntimeException;
@@ -979,7 +979,7 @@ public class KpiService {
 				}
 			}
 			if (!measureAndKpi.isEmpty()) {
-				jsError.addErrorKey("newKpi.rule.usedByKpi.save.error", StringUtils.join(measureAndKpi, ", "));
+				jsError.addErrorKey("newKpi.rule.usedByKpi.save.error", KnowageStringUtils.join(measureAndKpi, ", "));
 			}
 
 			// Checking if any removed attribute is linked to a kpi (if so we cannot save this rule)

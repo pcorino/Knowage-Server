@@ -38,7 +38,12 @@ import org.opengis.feature.simple.SimpleFeatureType;
 import it.eng.knowage.commons.security.PathTraversalChecker;
 import it.eng.spago.base.SourceBean;
 import it.eng.spagobi.commons.dao.DAOFactory;
+<<<<<<< HEAD:knowagegeoreportengine/src/main/java/it/eng/spagobi/engines/georeport/api/restfull/GeoUtils.java
 import it.eng.spagobi.commons.utilities.SpagoBIUtilities;
+=======
+import it.eng.spagobi.engines.georeport.dao.FeaturesProviderDAOFileImpl;
+import it.eng.spagobi.engines.georeport.dao.FeaturesProviderDAOWFSImpl;
+>>>>>>> feature/KNOWAGE-TM-700-PNT:knowagegeoreportengine/src/main/java/it/eng/spagobi/engines/georeport/api/restfull/geoUtils.java
 import it.eng.spagobi.engines.georeport.utils.LayerCache;
 import it.eng.spagobi.engines.georeport.utils.Monitor;
 import it.eng.spagobi.mapcatalogue.bo.GeoLayer;
@@ -148,11 +153,17 @@ public class GeoUtils {
 							: layerDef.getString("layer_url");
 
 					if (geoLayer.getType().equals("File")) {
+<<<<<<< HEAD:knowagegeoreportengine/src/main/java/it/eng/spagobi/engines/georeport/api/restfull/GeoUtils.java
 						PathTraversalChecker.get(SpagoBIUtilities.getResourcePath(), source);
 
 						outputFeatureCollection = DAOFactory.getFeaturesProviderFileDAO().getAllFeatures(source);
+=======
+						FeaturesProviderDAOFileImpl featuresProviderDAOFileImpl = new FeaturesProviderDAOFileImpl();
+						outputFeatureCollection = featuresProviderDAOFileImpl.getAllFeatures(source);
+>>>>>>> feature/KNOWAGE-TM-700-PNT:knowagegeoreportengine/src/main/java/it/eng/spagobi/engines/georeport/api/restfull/geoUtils.java
 					} else {
-						outputFeatureCollection = DAOFactory.getFeaturesProviderWFSDAO().getAllFeatures(source);
+						FeaturesProviderDAOWFSImpl featuresProviderDAOWFSImpl = new FeaturesProviderDAOWFSImpl();
+						outputFeatureCollection = featuresProviderDAOWFSImpl.getAllFeatures(source);
 					}
 					Assert.assertNotNull(outputFeatureCollection, "The feature source returned a null object");
 					logger.debug(

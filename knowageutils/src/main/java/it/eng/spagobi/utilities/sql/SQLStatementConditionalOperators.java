@@ -17,7 +17,7 @@
  */
 package it.eng.spagobi.utilities.sql;
 
-import it.eng.spagobi.utilities.StringUtils;
+import it.eng.spagobi.utilities.KnowageStringUtils;
 import it.eng.spagobi.utilities.assertion.Assert;
 
 import java.util.HashMap;
@@ -222,7 +222,7 @@ public class SQLStatementConditionalOperators {
 			public String getName() {return CriteriaConstants.IN;}
 			@Override
 			public String apply(String leftHandValue, String[] rightHandValues) {
-				String rightHandValue = StringUtils.join(rightHandValues, ",");
+				String rightHandValue = KnowageStringUtils.join(rightHandValues, ",");
 				return leftHandValue + " IN (" +  rightHandValue + ")";
 			}
 		});
@@ -230,7 +230,7 @@ public class SQLStatementConditionalOperators {
 			public String getName() {return CriteriaConstants.NOT_IN;}
 			@Override
 			public String apply(String leftHandValue, String[] rightHandValues) {
-				String rightHandValue = StringUtils.join(rightHandValues, ",");
+				String rightHandValue = KnowageStringUtils.join(rightHandValues, ",");
 				return leftHandValue + " NOT IN (" +  rightHandValue + ")";
 			}
 		});
