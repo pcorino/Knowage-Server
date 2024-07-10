@@ -17,24 +17,16 @@
  */
 package it.eng.spagobi.engines.georeport.dao;
 
-import it.eng.spagobi.commons.dao.ISpagoBIDao;
-
 import java.util.Map;
 
 import org.geotools.feature.FeatureCollection;
 import org.opengis.feature.simple.SimpleFeature;
 
+import it.eng.spagobi.commons.dao.ISpagoBIDao;
+
 /**
  * @authors Andrea Gioia (andrea.gioia@eng.it), Fabio D'Ovidio (f.dovidio@inovaos.it)
  */
-<<<<<<< HEAD:knowage-core/src/main/java/it/eng/spagobi/engines/georeport/utils/LayerCache.java
-public class LayerCache {
-	public static Map<String, FeatureCollection> cache;
-
-	static {
-		cache = new HashMap<>();
-	}
-=======
 public interface IFeaturesProviderWFSDAO extends ISpagoBIDao {
 
 	SimpleFeature getFeatureById(Object fetureProviderEndPoint, String layerName, Map parameters);
@@ -43,5 +35,4 @@ public interface IFeaturesProviderWFSDAO extends ISpagoBIDao {
 
 	FeatureCollection getAllFeaturesOLD(Object fetureProviderEndPoint, String layerName);
 
->>>>>>> feature/KNOWAGE-TM-700-PNT:knowagegeoreportengine/src/main/java/it/eng/spagobi/engines/georeport/dao/IFeaturesProviderWFSDAO.java
 }

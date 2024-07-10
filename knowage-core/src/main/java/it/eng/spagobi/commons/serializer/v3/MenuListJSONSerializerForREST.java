@@ -118,8 +118,8 @@ public class MenuListJSONSerializerForREST implements Serializer {
 	private Set<Integer> technicalUserMenuIds = new HashSet<>();
 
 	/*
-	 * Menus that are available to non-administrator users but have the required functionality. The map contains the pair (label, id of the technical menu of
-	 * which it is a duplicate).
+	 * Menus that are available to non-administrator users but have the required functionality. The map contains the pair (label, id of the technical menu of which
+	 * it is a duplicate).
 	 */
 	private final Map<String, Integer> allowedMenuToNotDuplicate = new HashMap<>();
 
@@ -916,8 +916,7 @@ public class MenuListJSONSerializerForREST implements Serializer {
 	}
 
 	private void setPropertiesForFunctionalityMenu(Menu childElem, JSONObject temp2, String path) throws JSONException {
-		temp2.put(TO,
-				StringEscapeUtils.escapeJavaScript(MenuHelper.findFunctionalityUrl(childElem, contextName)));
+		temp2.put(TO, StringEscapeUtils.escapeEcmaScript(MenuHelper.findFunctionalityUrl(childElem, contextName)));
 	}
 
 	private void setPropertiesForStaticMenu(Menu childElem, JSONObject temp2, String path) throws JSONException {

@@ -225,12 +225,12 @@ public class JasperReportEngineInstance extends AbstractEngineInstance {
 			Monitor monitorExportReport = MonitorFactory.start("JasperReportRunner.ExportReport");
 
 			if (outputType.equalsIgnoreCase("html")) {
-				exporter = new HtmlExporter(); 
+				exporter = new HtmlExporter();
 				SimpleHtmlExporterConfiguration configuration = new SimpleHtmlExporterConfiguration();
 //				exporter.setParameter(JRHtmlExporterParameter.IS_USING_IMAGES_TO_ALIGN, Boolean.FALSE);
 //				exporter.setParameter(JRHtmlExporterParameter.BETWEEN_PAGES_HTML, "");
 				configuration.setBetweenPagesHtml("");
-				
+
 				HashMap mImagesMap = new HashMap();
 				UUID uuid = UUID.randomUUID();
 				String mapName = uuid.toString();
@@ -241,13 +241,13 @@ public class JasperReportEngineInstance extends AbstractEngineInstance {
 
 				exporter.setConfiguration(configuration);
 			} else if (outputType.equalsIgnoreCase("txt")) {
-				exporter = new JRTextExporter(); 
+				exporter = new JRTextExporter();
 				SimpleTextExporterConfiguration configuration = new SimpleTextExporterConfiguration();
 //				exporter.setParameter(JRTextExporterParameter.PAGE_HEIGHT, 100);
 //				exporter.setParameter(JRTextExporterParameter.PAGE_WIDTH, 100);
 				exporter.setConfiguration(configuration);
 			} else if (outputType.equalsIgnoreCase("JPG")) {
-				exporter = new JRJpegExporter();		
+				exporter = new JRJpegExporter();
 //				exporter.setParameter(JRImageExporterParameter.JASPER_REPORT, report);
 			} else if (outputType.equalsIgnoreCase("JPGBASE64")) {
 				exporter = new JRImageBase64Exporter();
@@ -256,18 +256,18 @@ public class JasperReportEngineInstance extends AbstractEngineInstance {
 
 //			exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
 //			exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, out);
-			
+
 			exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-		    SimpleOutputStreamExporterOutput exporterOutput = null;
-		    try (OutputStream outputStream = out) {
-		        exporterOutput = new SimpleOutputStreamExporterOutput(outputStream);
-		        exporter.setExporterOutput(exporterOutput);
-		        exporter.exportReport();
-		    } finally {
-		        if (exporterOutput != null) {
-		            exporterOutput.close();
-		        }
-		    }			
+			SimpleOutputStreamExporterOutput exporterOutput = null;
+			try (OutputStream outputStream = out) {
+				exporterOutput = new SimpleOutputStreamExporterOutput(outputStream);
+				exporter.setExporterOutput(exporterOutput);
+				exporter.exportReport();
+			} finally {
+				if (exporterOutput != null) {
+					exporterOutput.close();
+				}
+			}
 
 			monitorExportReport.stop();
 			LOGGER.debug("Report exported succesfully");
@@ -393,7 +393,7 @@ public class JasperReportEngineInstance extends AbstractEngineInstance {
 			LOGGER.debug("Internazionalization in " + language);
 			Builder builder = new Builder().setLanguage(language).setRegion(country);
 			String script = (String) getEnv().get("SBI_SCRIPT");
-			if (org.apache.commons.lang.StringUtils.isNotBlank(script)) {
+			if (StringUtils.isNotBlank(script)) {
 				builder.setScript(script);
 			}
 			locale = builder.build();

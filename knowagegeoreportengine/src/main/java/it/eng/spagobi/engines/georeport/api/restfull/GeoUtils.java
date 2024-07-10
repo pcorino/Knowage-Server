@@ -23,7 +23,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.geotools.data.DataUtilities;
 import org.geotools.feature.FeatureCollection;
 import org.geotools.feature.FeatureIterator;
@@ -38,12 +39,9 @@ import org.opengis.feature.simple.SimpleFeatureType;
 import it.eng.knowage.commons.security.PathTraversalChecker;
 import it.eng.spago.base.SourceBean;
 import it.eng.spagobi.commons.dao.DAOFactory;
-<<<<<<< HEAD:knowagegeoreportengine/src/main/java/it/eng/spagobi/engines/georeport/api/restfull/GeoUtils.java
 import it.eng.spagobi.commons.utilities.SpagoBIUtilities;
-=======
 import it.eng.spagobi.engines.georeport.dao.FeaturesProviderDAOFileImpl;
 import it.eng.spagobi.engines.georeport.dao.FeaturesProviderDAOWFSImpl;
->>>>>>> feature/KNOWAGE-TM-700-PNT:knowagegeoreportengine/src/main/java/it/eng/spagobi/engines/georeport/api/restfull/geoUtils.java
 import it.eng.spagobi.engines.georeport.utils.LayerCache;
 import it.eng.spagobi.engines.georeport.utils.Monitor;
 import it.eng.spagobi.mapcatalogue.bo.GeoLayer;
@@ -70,7 +68,7 @@ public class GeoUtils {
 	public static final String LAYER_URL = "layerUrl";
 	public static final String NO_DATASET = "noDataset";
 
-	private static Logger logger = Logger.getLogger(GeoUtils.class);
+	private static Logger logger = LogManager.getLogger(GeoUtils.class);
 
 	public static FieldType getDsFieldType(String xml, String fieldName) throws Exception {
 		FieldType toReturn = IFieldMetaData.FieldType.ATTRIBUTE;
@@ -153,14 +151,10 @@ public class GeoUtils {
 							: layerDef.getString("layer_url");
 
 					if (geoLayer.getType().equals("File")) {
-<<<<<<< HEAD:knowagegeoreportengine/src/main/java/it/eng/spagobi/engines/georeport/api/restfull/GeoUtils.java
 						PathTraversalChecker.get(SpagoBIUtilities.getResourcePath(), source);
 
-						outputFeatureCollection = DAOFactory.getFeaturesProviderFileDAO().getAllFeatures(source);
-=======
 						FeaturesProviderDAOFileImpl featuresProviderDAOFileImpl = new FeaturesProviderDAOFileImpl();
 						outputFeatureCollection = featuresProviderDAOFileImpl.getAllFeatures(source);
->>>>>>> feature/KNOWAGE-TM-700-PNT:knowagegeoreportengine/src/main/java/it/eng/spagobi/engines/georeport/api/restfull/geoUtils.java
 					} else {
 						FeaturesProviderDAOWFSImpl featuresProviderDAOWFSImpl = new FeaturesProviderDAOWFSImpl();
 						outputFeatureCollection = featuresProviderDAOWFSImpl.getAllFeatures(source);
